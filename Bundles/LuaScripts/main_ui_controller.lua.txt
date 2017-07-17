@@ -6,16 +6,23 @@ local function classMainUIController()
 
     ---- 成员变量 ----
 
+    local _gamePanels = {}
+
     ---- 成员函数 前置声明 ----
 
     ---- 成员函数 ----
 
     function self.Awake()
-
+        self.prototype:SetActive(false)
     end
 
     function self.Start()
-        
+        for i = 1, 10 do
+            local go = GameObject.Instantiate(self.prototype)
+            go.transform:SetParent(self.contentNode.transform)
+            go:SetActive(true)
+            _gamePanels[i] = go:GetComponent("LuaBehaviour").LuaEnv
+        end
     end
 
     function self.Update()
