@@ -1,0 +1,30 @@
+--
+-- <代码文件解释说明>
+--
+
+local function classXxxxSystem()
+	local self = {}
+
+	---- 成员变量 ----
+
+	---- 成员函数 前置声明 ----
+
+	---- 构造器 ----
+
+	local function _init()
+	end
+
+	---- 成员函数 ----
+
+	---- END
+
+	_init()
+	
+	return self
+end
+
+if getGlobal( "xxxxSystem" ) == nil then
+	declareGlobal( "xxxxSystem", classXxxxSystem() )
+end
+
+return true

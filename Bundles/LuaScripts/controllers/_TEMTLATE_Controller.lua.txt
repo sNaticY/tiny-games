@@ -1,0 +1,19 @@
+ --
+-- <代码文件解释说明>
+--
+
+local function classXxxxController()
+	local self = {}
+
+	---- 成员变量 ----
+
+	---- 成员函数 前置声明 ----
+
+	---- 成员函数 ----
+
+	---- END
+
+	return self
+end
+
+return classXxxxController
