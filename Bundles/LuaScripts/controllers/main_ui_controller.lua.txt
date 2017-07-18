@@ -15,7 +15,7 @@ local function classMainUIController()
     end
 
     function self.Start()
-        Event.Register(self.OnRefresh, gameSelectSystem.events.onRefresh)
+        Event.Register(self.OnRefresh, gameSelectSystem.events.onGameRefreshed)
     end
 
     function self.OnRefresh()
