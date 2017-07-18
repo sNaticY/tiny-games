@@ -1,0 +1,34 @@
+--
+-- <代码文件解释说明>
+--
+
+local function classGameSelectSystem()
+	local self = {}
+
+	---- 成员变量 ----
+
+	self.events = {
+		onGameRefreshed = "ON_GAME_REFRESHED",
+	}
+
+	---- 成员函数 前置声明 ----
+
+	---- 构造器 ----
+
+	local function _init()
+	end
+
+	---- 成员函数 ----
+
+	---- END
+
+	_init()
+	
+	return self
+end
+
+if getGlobal( "gameSelectSystem" ) == nil then
+	declareGlobal( "gameSelectSystem", classGameSelectSystem() )
+end
+
+return true

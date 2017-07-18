@@ -1,0 +1,40 @@
+--
+-- <代码文件解释说明>
+--
+local function classGamePanelUIController()
+    local self = {}
+
+    ---- 成员变量 ----
+
+    ---- 成员函数 前置声明 ----
+
+    ---- 成员函数 ----
+
+    function self.init(projectName)
+        local gameName = PlayerPrefs.GetString(projectName .. "_gameName")
+        local remoteUrl = PlayerPrefs.GetString(projectName .. "_remoteUrl")
+        local versionFileName = PlayerPrefs.GetString(projectName .. "_versionFileName")
+        local luaBundleName = PlayerPrefs.GetString(projectName .. "_luaBundleName")
+        local luaScriptRootFolder = PlayerPrefs.GetString(projectName .. "_luaScriptRootFolder")
+        local sceneRootFolderPath = PlayerPrefs.GetString(projectName .. "_sceneRootFolderPath")
+
+        local mainGame = GameObject("Main Game " .. projectName):GetComponent("MainGame")
+        mainGame.ProjectName = projectName
+        mainGame.RemoteUrl = remoteUrl
+        mainGame.VersionFileName = versionFileName
+        mainGame.LuaBundleName = luaBundleName
+        mainGame.LuaScriptRootFolder = luaScriptRootFolder
+        mainGame.SceneRootFolderPath = sceneRootFolderPath
+
+        mainGame.TotalSlider = self.progress:GetComponent("Slider")
+        mainGame.gameButton = self.gameButton:GetComponent("Button")
+
+        self.gameName = gameName
+    end
+
+    ---- END
+
+    return self
+end
+
+return classGamePanelUIController

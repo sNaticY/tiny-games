@@ -4,36 +4,41 @@
 local function classMainUIController()
     local self = {}
 
-    ---- 成员变量 ----
+    --- 成员变量 ---
 
-    local _gamePanels = {}
+    --- 成员函数 前置声明 ---
 
-    ---- 成员函数 前置声明 ----
-
-    ---- 成员函数 ----
+    --- 成员函数 ---
 
     function self.Awake()
         self.prototype:SetActive(false)
     end
 
     function self.Start()
-        for i = 1, 10 do
+        Event.Register(self.OnRefresh, gameSelectSystem.events.onRefresh)
+    end
+
+    function self.OnRefresh()
+        local gameCount = PlayerPrefs.GetInt("GameCount")
+        for i = 1, gameCount do
+            local projectName = PlayerPrefs.GetString("Game_" .. i)
+
             local go = GameObject.Instantiate(self.prototype)
             go.transform:SetParent(self.contentNode.transform)
             go:SetActive(true)
-            _gamePanels[i] = go:GetComponent("LuaBehaviour").LuaEnv
+
+            local gamePanel = go:GetComponent("LuaBehaviour").LuaEnv
+            gamePanel.init(projectName)
         end
     end
 
     function self.Update()
-
     end
 
     function self.OnDestroy()
-        
     end
 
-    ---- END
+    --- - END
 
     return self
 end
